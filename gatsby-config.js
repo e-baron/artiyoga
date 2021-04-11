@@ -35,13 +35,13 @@ module.exports = {
         path: "./src/pages",
       },
       __key: "pages",      
-    },   
+    }, 
     {
-      resolve: "gatsby-source-filesystem",
+      resolve: 'gatsby-source-filesystem',
       options: {
-        name: "md-pages",
-        path: "./src/markdown-pages/",
-      }    
+        name: 'page-content',
+        path: `./src/page-content/`,
+      },
     },
     `gatsby-remark-images`,
     {
@@ -55,11 +55,12 @@ module.exports = {
               linkImagesToOriginal:	true,
             },
           },
-        ],
+        ],/*
         defaultLayouts: {
           //posts: require.resolve("./src/components/posts-layout.js"),
           default: require.resolve("./src/components/default-mdx-layout.js"),
-        },
+        },  */
+        extensions: ['.mdx', '.md'],      
       },
     },
   ],
