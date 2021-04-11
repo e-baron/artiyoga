@@ -1,16 +1,42 @@
+const emoji = require(`remark-emoji`);
+
 module.exports = {
   siteMetadata: {
     title: "artiYoga",
-  },
-  plugins: [
-    //"gatsby-plugin-image",
-    /*
-    {
-      resolve: "gatsby-plugin-google-analytics",
-      options: {
-        trackingId: "",
+    menuLinks: [
+      {
+        name: `Home`,
+        link: `/`,
       },
-    },*/
+      {
+        name: `About me`,
+        link: `/about-me`,       
+      },
+      {
+        name: `News`,
+        link: `/news`,
+        subMenu: [
+          {
+            name: `introduction`,
+            link: `/introduction`,
+          },
+          {
+            name: `Session q2`,
+            link: `/session-q2`,
+          },
+          {
+            name: `Session q3`,
+            link: `/session-q3`,
+          },
+        ],
+      },
+      {
+        name: `Contact`,
+        link: `/contact`,
+      },
+    ],
+  },
+  plugins: [   
     "gatsby-plugin-react-helmet",
     {
       resolve: "gatsby-plugin-manifest",
@@ -43,6 +69,15 @@ module.exports = {
         path: `./src/page-content/`,
       },
     },
+    // load components that leave above the page components (header, footer...)
+    // Not necessary...
+    /*
+    {
+      resolve: `gatsby-plugin-layout`,
+      options: {
+        component: require.resolve(`./src/components/main-layout.js`),
+      },
+    },  */
     `gatsby-remark-images`,
     {
       resolve: `gatsby-plugin-mdx`,
@@ -55,12 +90,9 @@ module.exports = {
               linkImagesToOriginal:	true,
             },
           },
-        ],/*
-        defaultLayouts: {
-          //posts: require.resolve("./src/components/posts-layout.js"),
-          default: require.resolve("./src/components/default-mdx-layout.js"),
-        },  */
-        extensions: ['.mdx', '.md'],      
+        ],
+        extensions: ['.mdx', '.md'], 
+        remarkPlugins: [emoji],             
       },
     },
   ],

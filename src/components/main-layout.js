@@ -1,14 +1,20 @@
 import React, { Fragment } from "react";
 import { graphql } from "gatsby";
-import { Link, useStaticQuery } from "gatsby";
+import { useStaticQuery } from "gatsby";
+import Header from "./header.js";
 
 const MainLayout = ({ children }) => {
+  console.log("Call main layout, children:", children);
   const data = useStaticQuery(
     graphql`
-      query {
+      query SiteTitleQuery {
         site {
           siteMetadata {
             title
+            menuLinks {
+              name
+              link
+            }
           }
         }
       }
@@ -17,10 +23,13 @@ const MainLayout = ({ children }) => {
 
   return (
     <Fragment>
-      <header>
-        <h1>{data.site.siteMetadata.title}</h1>
-      </header>
+      <Header
+        siteTitle={data.site.siteMetadata.title}
+        menuLinks={data.site.siteMetadata.menuLinks}
+      />
+
       <main>{children}</main>
+
       <footer>FOOTER</footer>
     </Fragment>
   );
