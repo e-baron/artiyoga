@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import { graphql } from "gatsby";
 import { useStaticQuery } from "gatsby";
 import Header from "./header.js";
+import Footer from "./footer.js";
 
 const MainLayout = ({ children }) => {
   console.log("Call main layout, children:", children);
@@ -14,6 +15,10 @@ const MainLayout = ({ children }) => {
             menuLinks {
               name
               link
+              subMenu {
+                link
+                name
+              }
             }
           }
         }
@@ -30,7 +35,7 @@ const MainLayout = ({ children }) => {
 
       <main>{children}</main>
 
-      <footer>FOOTER</footer>
+      <Footer siteTitle={data.site.siteMetadata.title}></Footer>
     </Fragment>
   );
 };

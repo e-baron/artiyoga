@@ -73,7 +73,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 };
 
 
-// define fields for the menu & submenus
+/*
+// define fields for the menu & submenus if we want to avoid props with null values for example
 exports.createSchemaCustomization = ({ actions }) => {
   const { createFieldExtension, createTypes } = actions
   createFieldExtension({
@@ -108,3 +109,5 @@ exports.createSchemaCustomization = ({ actions }) => {
   `
   createTypes(typeDefs)
 }
+
+*/

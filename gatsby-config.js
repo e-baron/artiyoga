@@ -18,15 +18,15 @@ module.exports = {
         subMenu: [
           {
             name: `introduction`,
-            link: `/introduction`,
+            link: `/news/introduction`,
           },
           {
             name: `Session q2`,
-            link: `/session-q2`,
+            link: `/news/session-q2`,
           },
           {
             name: `Session q3`,
-            link: `/session-q3`,
+            link: `/news/session-q3`,
           },
         ],
       },
@@ -66,18 +66,9 @@ module.exports = {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'page-content',
-        path: `./src/page-content/`,
+        path: `./src/page-content`,
       },
-    },
-    // load components that leave above the page components (header, footer...)
-    // Not necessary...
-    /*
-    {
-      resolve: `gatsby-plugin-layout`,
-      options: {
-        component: require.resolve(`./src/components/main-layout.js`),
-      },
-    },  */
+    },   
     `gatsby-remark-images`,
     {
       resolve: `gatsby-plugin-mdx`,
@@ -95,5 +86,6 @@ module.exports = {
         remarkPlugins: [emoji],             
       },
     },
+    
   ],
 };

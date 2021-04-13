@@ -12,13 +12,13 @@ const Menu = ({ menuLinks }) => {
   return (
     <nav>
       <div class="navbar">
-        {menuLinks.map((link) => (
-          <ListLink to={link.link}>
+        {menuLinks.map((link, index) => (
+          <ListLink key={index} to={link.link}>
             {link.name}
             {link.subMenu && link.subMenu.length > 0 ? (
               <div class="subnav">
-                {link.subMenu.map((subLink) => (
-                  <ListLink to={subLink.link}>{subLink.name}</ListLink>
+                {link.subMenu.map((subLink, index) => (
+                  <ListLink key={index} to={subLink.link}>{subLink.name}</ListLink>
                 ))}
               </div>
             ) : null}
