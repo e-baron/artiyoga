@@ -14,7 +14,7 @@ export default function PageTemplate({ data: { mdx } }) {
   return (
     <MainLayout>
       <div>
-        <h3>{mdx.frontmatter.title}</h3>
+        <h3 className="text-center font-bold">{mdx.frontmatter.title}</h3>
         {mdx.frontmatter.featuredImage ? (
           <Img fluid={mdx.frontmatter.featuredImage.childImageSharp.fluid} />
         ) : null}

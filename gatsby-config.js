@@ -17,7 +17,7 @@ module.exports = {
         link: `/news`,
         subMenu: [
           {
-            name: `introduction`,
+            name: `Introduction`,
             link: `/news/introduction`,
           },
           {
@@ -86,6 +86,6 @@ module.exports = {
         remarkPlugins: [emoji],             
       },
     },
-    
+    `gatsby-plugin-postcss`,
   ],
 };

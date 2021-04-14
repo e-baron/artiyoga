@@ -1,8 +1,9 @@
 import React from "react";
-const Footer = ({ siteTitle }) => {
+const Footer = ({ siteTitle, ...otherProps}) => {
+  const {className} = otherProps;  
   return (
-    <footer>
-      <h3>{siteTitle}</h3>     
+    <footer {...{className}}>
+      <h3 className="font-bold">{siteTitle}</h3>     
     </footer>
   );
 };
