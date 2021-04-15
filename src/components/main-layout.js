@@ -28,17 +28,18 @@ const MainLayout = ({ children }) => {
   );
 
   return (
-    <div className="grid grid-cols-12 gap-0 min-h-screen">
+    // <div className="grid grid-cols-12 grid-flow-row auto-rows-min min-h-screen gap-0 bg-tertiary-900 text-tertiaryTwin">
+       <div className="flex flex-col min-h-screen gap-0 bg-tertiary-900 text-tertiaryTwin">
       <Header
-        className="col-span-12"
+        className=""
         siteTitle={data.site.siteMetadata.title}
         menuLinks={data.site.siteMetadata.menuLinks}
       />
 
-      <main className="col-span-12 flex items-center justify-between flex-wrap bg-blue-100 p-6 z-0">{children}</main>
+      <main className="flex-grow bg-secondary-100 text-secondaryTwin p-6">{children}</main>
 
       <Footer
-        className="col-span-12 flex flex-grow px-6 items-end mx-auto"
+        className="col-span-12 mb-0 mx-auto bg-tertiary-900 text-tertiaryTwin"
         siteTitle={data.site.siteMetadata.title}
       ></Footer>
     </div>

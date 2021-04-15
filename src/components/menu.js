@@ -5,7 +5,7 @@ const ListLink = ({ to, children }) => {
   return (
     <Link
       to={to}
-      className="block lg:align-middle text-blue-200 hover:text-white"
+      className="block lg:align-middle hover:text-primaryTwin"
     >
       {children}
     </Link>
@@ -16,17 +16,17 @@ const Menu = ({ menuLinks, siteTitle }) => {
   const [buttonMenuClicked, setButtonMenuClicked] = useState(false);
 
   return (
-    <nav className="flex items-center justify-between flex-wrap bg-blue-600 p-6 z-0">
-      <div className="flex items-center flex-shrink-0 text-white mr-6">
+    <nav className="flex items-center justify-between flex-wrap bg-primary-dark p-6 z-0">
+      <div className="flex items-center flex-shrink-0 text-primaryTwin mr-6">
         <span className="font-semibold text-xl tracking-tight">
           {siteTitle}
         </span>
       </div>
 
-      <div className="block lg:hidden z-0">
+      <div className="block lg:hidden">
         <button
           onClick={() => setButtonMenuClicked(!buttonMenuClicked)}
-          className="flex items-center px-3 py-2 border rounded text-blue-200 border-teal-400 hover:text-white hover:border-white"
+          className="flex items-center px-3 py-2 border rounded text-primary-light border-primary-light hover:text-primaryTwin hover:border-primaryTwin"
         >
           <svg
             className="fill-current h-3 w-3"
@@ -41,21 +41,21 @@ const Menu = ({ menuLinks, siteTitle }) => {
 
       <div
         className={
-          !buttonMenuClicked
+          buttonMenuClicked
             ? "w-full block flex-grow lg:flex lg:items-center lg:w-auto"
-            : "hidden lg:block"
+            : "hidden lg:block lg:flex-grow lg:items-center lg:w-auto"
         }
       >
         <div className="text-sm inline-block lg:flex-grow z-0">
           {menuLinks.map((link, index) => (
-            <div className="bg-blue-500 group lg:inline-block relative flex-grow flex-shrink-0">
-              <div className="bg-blue-500 mx-3">
+            <div className="bg-primary group lg:inline-block relative flex-grow flex-shrink-0">
+              <div className="bg-primary mx-3 text-primary-light">
                 <ListLink key={index} to={link.link}>
                   {link.name}
                 </ListLink>
               </div>
               {link.subMenu && link.subMenu.length > 0 ? (
-                <div className="hidden bg-blue-400 group-hover:block absolute left-3 flex-grow flex-shrink-0 z-10">
+                <div className="hidden bg-primary-light text-primary group-hover:block absolute left-3 flex-grow flex-shrink-0 z-10">
                   {link.subMenu.map((subLink, index) => (
                     <div className="mx-3">
                       <ListLink key={index} to={subLink.link}>

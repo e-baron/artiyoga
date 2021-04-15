@@ -3,7 +3,7 @@ const Footer = ({ siteTitle, ...otherProps}) => {
   const {className} = otherProps;  
   return (
     <footer {...{className}}>
-      <h3 className="font-bold">{siteTitle}</h3>     
+      <h3>{siteTitle}</h3>     
     </footer>
   );
 };

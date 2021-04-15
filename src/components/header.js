@@ -4,7 +4,7 @@ const Header = ({ siteTitle, menuLinks, ...otherProps}) => {
   const {className} = otherProps;  
   return (
     <header {...{className}}>
-      <h1 className="text-center font-bold">{siteTitle}</h1>
+      <h1 className="text-center">{siteTitle}</h1>
       <Menu {...{menuLinks, siteTitle}}></Menu>
     </header>
   );

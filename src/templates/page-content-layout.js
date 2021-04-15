@@ -7,6 +7,7 @@ import { Message } from "theme-ui";
 import Img from "gatsby-image";
 import MainLayout from "../components/main-layout.js";
 import NewsIndex from "../components/news-index.js";
+//import "../components/main-layout-style.css";
 
 const shortcodes = { Link, Message, NewsIndex };
 
@@ -14,7 +15,7 @@ export default function PageTemplate({ data: { mdx } }) {
   return (
     <MainLayout>
       <div>
-        <h3 className="text-center font-bold">{mdx.frontmatter.title}</h3>
+        <h3 className="text-center">{mdx.frontmatter.title}</h3>
         {mdx.frontmatter.featuredImage ? (
           <Img fluid={mdx.frontmatter.featuredImage.childImageSharp.fluid} />
         ) : null}
