@@ -14,21 +14,7 @@ module.exports = {
       },
       {
         name: `News`,
-        link: `/news`,
-        subMenu: [
-          {
-            name: `Introduction`,
-            link: `/news/introduction`,
-          },
-          {
-            name: `Session q2`,
-            link: `/news/session-q2`,
-          },
-          {
-            name: `Session q3`,
-            link: `/news/session-q3`,
-          },
-        ],
+        link: `/news`,        
       },
       {
         name: `Contact`,
@@ -87,5 +73,14 @@ module.exports = {
       },
     },
     `gatsby-plugin-postcss`,
+    `gatsby-plugin-sass`,
+    {
+      resolve: 'gatsby-plugin-react-svg',
+      options: {
+        rule: {
+          include: /\.inline\.svg$/
+        }
+      }
+    }
   ],
 };

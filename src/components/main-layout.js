@@ -3,7 +3,7 @@ import { graphql } from "gatsby";
 import { useStaticQuery } from "gatsby";
 import Header from "./header.js";
 import Footer from "./footer.js";
-import "./main-layout-style.css";
+import "../scss/custom-layout.scss";
 
 const MainLayout = ({ children }) => {
   console.log("Call main layout, children:", children);
@@ -28,18 +28,19 @@ const MainLayout = ({ children }) => {
   );
 
   return (
-    // <div className="grid grid-cols-12 grid-flow-row auto-rows-min min-h-screen gap-0 bg-tertiary-900 text-tertiaryTwin">
-       <div className="flex flex-col min-h-screen gap-0 bg-tertiary-900 text-tertiaryTwin">
+    <div className="d-flex flex-column min-vh-100">
       <Header
-        className=""
+        className="mt-0 px-0 sticky-top"
         siteTitle={data.site.siteMetadata.title}
         menuLinks={data.site.siteMetadata.menuLinks}
       />
 
-      <main className="flex-grow bg-secondary-100 text-secondaryTwin p-6">{children}</main>
+      <main className="flex-grow-1">
+        {children}
+      </main>
 
       <Footer
-        className="col-span-12 mb-0 mx-auto bg-tertiary-900 text-tertiaryTwin"
+        className="text-center"
         siteTitle={data.site.siteMetadata.title}
       ></Footer>
     </div>

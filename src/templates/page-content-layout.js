@@ -7,21 +7,35 @@ import { Message } from "theme-ui";
 import Img from "gatsby-image";
 import MainLayout from "../components/main-layout.js";
 import NewsIndex from "../components/news-index.js";
-//import "../components/main-layout-style.css";
+
 
 const shortcodes = { Link, Message, NewsIndex };
 
 export default function PageTemplate({ data: { mdx } }) {
   return (
     <MainLayout>
-      <div>
-        <h3 className="text-center">{mdx.frontmatter.title}</h3>
-        {mdx.frontmatter.featuredImage ? (
-          <Img fluid={mdx.frontmatter.featuredImage.childImageSharp.fluid} />
-        ) : null}
-        <MDXProvider components={shortcodes}>
-          <MDXRenderer>{mdx.body}</MDXRenderer>
-        </MDXProvider>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col">
+            <h3 className="text-center">{mdx.frontmatter.title}</h3>            
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6 mx-auto">            
+            {mdx.frontmatter.featuredImage ? (
+              <Img
+                fluid={mdx.frontmatter.featuredImage.childImageSharp.fluid}
+              />              
+            ) : null}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col mt-2">
+            <MDXProvider components={shortcodes}>
+              <MDXRenderer>{mdx.body}</MDXRenderer>
+            </MDXProvider>
+          </div>
+        </div>
       </div>
     </MainLayout>
   );
