@@ -1,0 +1,5 @@
+.body {
+  @include text($family: $font-regular, $size: large, $lineHeight: null, $weight: 400);
+  margin: 0;
+  padding: 0;
+}

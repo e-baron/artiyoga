@@ -1,0 +1,14 @@
+.background-image {
+  background-size: cover;
+  z-index: 0;  
+
+  /* full grid embedded image overlaying (or underlaying) the full grid area
+         whatever the size of the grid */
+    &--full-screen {    
+    height: 100vh;
+    }
+
+    &--half-screen {
+        height: 50vh;
+      }
+}

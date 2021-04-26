@@ -1,0 +1,71 @@
+// Section without Gatsby embedded background image
+.section {
+  margin: 0;
+  @include regular-text();
+ 
+  display: grid;
+  grid-template:
+    "hr1 hr2 hr3" 1fr
+    "cr1 cr2 cr3" 1fr
+    "fr1 fr3 fr3" 1fr;
+
+  /* Section's elements */
+
+  &__header {
+    grid-area: hr1-start / hr1-start / hr1-end / hr3-end;
+    align-self: start;
+    justify-self: center;
+    margin-top: 1rem;
+    z-index: 1;
+
+    &--links {
+      grid-area: hr1-start / hr1-start / hr1-end / hr1-end;
+    }
+
+    &--center {
+      grid-area: hr2-start / hr2-start / hr2-end / hr2-end;
+    }
+  }
+
+  &__footer {
+    grid-area: fr1-start / fr1-start / fr1-end / fr3-end;
+    align-self: end;
+    justify-self: center;
+    margin: 1rem;
+    z-index: 1;
+
+    &-center {
+      grid-area: fr2-start / fr2-start / fr2-end / fr2-end im !important;
+    }
+  }
+
+  /* Deal with background elements */
+
+  &__background-image {
+    background-size: cover !important;
+    z-index: 0;
+
+    /* full grid embedded image overlaying (or underlaying) the full grid area
+         whatever the size of the grid */
+    &--full-screen {
+      grid-area: 1 / 1 / -1 / -1;
+      height: 100vh;
+    }
+  }
+  
+  /* Deal with section modifiers */
+
+  &--full-screen {
+    height: 100vh;
+  }
+
+  &--text-light {
+    color: $secondary-color,
+  }
+
+  &--text-emphasized {
+    @include emphasized-text();
+  }
+
+
+}

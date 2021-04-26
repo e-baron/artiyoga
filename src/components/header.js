@@ -1,10 +1,10 @@
 import React from "react";
 import Menu from "./menu.js";
-const Header = ({ siteTitle, menuLinks, ...otherProps}) => {
+const Header = ({ siteTitle, menuLinks, isFullPageLayout,...otherProps}) => {
   const {className} = otherProps;  
   return (
     <header {...{className}}>     
-      <Menu {...{menuLinks, siteTitle}}></Menu>     
+      <Menu {...{menuLinks, siteTitle, isFullPageLayout}}></Menu>     
     </header>
   );
 };

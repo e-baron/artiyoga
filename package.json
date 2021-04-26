@@ -21,6 +21,7 @@
     "autoprefixer": "^10.2.5",
     "bootstrap": "^5.0.0-beta3",
     "gatsby": "^3.2.1",
+    "gatsby-background-image": "^1.5.1",
     "gatsby-dynamical-navigation": "^0.4.1",
     "gatsby-image": "^3.2.0",
     "gatsby-plugin-google-analytics": "^3.2.0",

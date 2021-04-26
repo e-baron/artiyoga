@@ -5,9 +5,15 @@ import { NavBar } from "bootstrap";
 
 import Icon from "../images/artiyoga.inline.svg";
 
-const Menu = ({ menuLinks, siteTitle }) => {
+const Menu = ({ menuLinks, siteTitle, isFullPageLayout }) => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light w-100 navbar-mattress">
+    <nav
+      className={
+        isFullPageLayout
+          ? "navbar navbar-expand-lg navbar-light bg-light w-100 navbar-transparent"
+          : "navbar navbar-expand-lg navbar-light bg-light w-100 navbar-mattress"
+      }
+    >
       <div className="container-fluid">
         <Link className="navbar-brand" to="/">
           {siteTitle}

@@ -1,0 +1,33 @@
+$columns-count: 12;
+
+.col-grid {
+  display: grid;
+  grid-template-columns: repeat($columns-count, [col-start] 1fr);
+  z-index: 1;
+  grid-auto-rows: minmax(10vh, auto);
+  
+
+  // an item is by default a full row, running over all columns
+  &__item {   
+    //padding-top: 1rem;
+    //padding-left: 1rem; 
+    grid-column: 1 / span $columns-count;
+
+    &--100vh {
+      height: 100vh;
+    }
+
+    // by default, a half-screen item is a full row, running over all columns
+    &--50vh {
+      height: 50vh;
+    }
+
+    &--links {
+      grid-column: 1 / span ($columns-count / 2);
+    }
+
+    &--right {
+      grid-column: (($columns-count / 2)+1) / span ($columns-count / 2);
+    }
+  }
+}

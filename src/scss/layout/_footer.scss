@@ -1,0 +1,5 @@
+footer {
+  background-color: $tertiary-color;
+  @include text($family: $font-regular, $color: lighten($secondary-color, 40%), $size: large, $lineHeight: null, $weight: 400);
+  
+}
