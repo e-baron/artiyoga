@@ -1,71 +1,53 @@
-// Section without Gatsby embedded background image
 .section {
-  margin: 0;
   @include regular-text();
- 
-  display: grid;
-  grid-template:
-    "hr1 hr2 hr3" 1fr
-    "cr1 cr2 cr3" 1fr
-    "fr1 fr3 fr3" 1fr;
+
+  display: flex;
+  //flex-direction: row;
+  // should your items be too large to all display in one line, they will wrap onto another line
+  //flex-wrap: wrap;
+  // this is the equivalent of the above given
+
+  flex-flow: row wrap;
+
+  width: 100%;
+  min-height: 10px;
+  z-index: 1;
+
+  &__content {
+    // The flex shorthand allows you to set the three values in this order — flex-grow, flex-shrink, flex-basis
+    // With the flex-grow property set to a positive integer, flex items can grow along the main axis from their flex-basis. This will cause the item to stretch and take up any available space on that axis, or a proportion of the available space if other items are allowed to grow too.
+    flex: 1 1 100%;
+
+    flex-wrap: wrap;
+
+    //in a flex container, where you have box-sizing: border-box, and the width or flex-basis is used to calculate length, the boxes will render evenly regardless of padding.
+    box-sizing: border-box;
+
+    @media only screen and (min-width: $sm) {
+      flex-basis: 50%;
+    }
+  }
 
   /* Section's elements */
 
   &__header {
-    grid-area: hr1-start / hr1-start / hr1-end / hr3-end;
-    align-self: start;
-    justify-self: center;
-    margin-top: 1rem;
-    z-index: 1;
-
-    &--links {
-      grid-area: hr1-start / hr1-start / hr1-end / hr1-end;
-    }
-
-    &--center {
-      grid-area: hr2-start / hr2-start / hr2-end / hr2-end;
-    }
-  }
-
-  &__footer {
-    grid-area: fr1-start / fr1-start / fr1-end / fr3-end;
-    align-self: end;
-    justify-self: center;
-    margin: 1rem;
-    z-index: 1;
-
-    &-center {
-      grid-area: fr2-start / fr2-start / fr2-end / fr2-end im !important;
-    }
-  }
-
-  /* Deal with background elements */
-
-  &__background-image {
-    background-size: cover !important;
-    z-index: 0;
-
-    /* full grid embedded image overlaying (or underlaying) the full grid area
-         whatever the size of the grid */
-    &--full-screen {
-      grid-area: 1 / 1 / -1 / -1;
-      height: 100vh;
-    }
-  }
-  
-  /* Deal with section modifiers */
-
-  &--full-screen {
-    height: 100vh;
-  }
-
-  &--text-light {
-    color: $secondary-color,
-  }
-
-  &--text-emphasized {
+    flex: 1 1 100%;
+    min-height: 10px; //5vh;
+    text-align: center;
+    align-self: flex-start;
     @include emphasized-text();
   }
 
+  &__footer {
+    flex: 1 1 100%;
+    min-height: 5vh;
+    text-align: center;
+    align-self: flex-end;
+  }
 
+  /* Deal with background elements within a section or within a*/
+
+
+
+  /* Deal with section modifiers */
 }
