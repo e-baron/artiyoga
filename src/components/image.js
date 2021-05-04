@@ -35,7 +35,7 @@ const Image = ({ children, name}) => {
       image.node.childImageSharp &&
       image.node.childImageSharp.fluid.originalName === name
   );
-  console.log("image found", requiredImage);
+  //console.log("image found", requiredImage);
   if (!requiredImage) {
     return (
       <div>

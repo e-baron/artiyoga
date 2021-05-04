@@ -1,5 +1,27 @@
-footer {
+.footer {
   background-color: $tertiary-color;
-  @include text($family: $font-regular, $color: lighten($secondary-color, 40%), $size: large, $lineHeight: null, $weight: 400);
-  
+
+  @include text(
+    $family: $font-regular,
+    $color: lighten($secondary-color, 40%),
+    $size: large,
+    $lineHeight: null,
+    $weight: 400
+  );
+
+  &__icons {
+    li:last-of-type {
+      margin-right: 0;
+    }
+    
+  }
+
+  &__background {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 8vh;
+
+    padding: 1rem;  
+  }
 }

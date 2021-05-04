@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, graphql, useStaticQuery } from "gatsby";
 import Img from "gatsby-image";
+import Image from "./image.js";
 
 const NewsIndex = () => {
   const data = useStaticQuery(
@@ -20,12 +21,18 @@ const NewsIndex = () => {
               frontmatter {
                 title
                 creationdate(formatString: "DD/MM/YYYY")
-                featuredImage {
-                  childImageSharp {
-                    fluid(maxWidth: 800) {
-                      ...GatsbyImageSharpFluid
-                    }
-                  }
+                featuredImage
+              }
+            }
+          }
+        }
+        allFile(filter: { sourceInstanceName: { eq: "images" } }) {
+          edges {
+            node {
+              childImageSharp {
+                fluid(quality: 90, maxWidth: 4608) {
+                  ...GatsbyImageSharpFluid_withWebp
+                  originalName
                 }
               }
             }
@@ -38,33 +45,19 @@ const NewsIndex = () => {
   const { edges: news } = data.allMdx;
 
   return (
-    <div>
-      <h3>News Index</h3>
-
+    <div className="section">
       {news.map(({ node: newsItem }) => (
-        <div className="card mb-3">
-          <div className="row g-0">
-            <div className="col-sm-4">
-              <div className="m-4">
-                <Link to={newsItem.fields.slug}>
-                  <Img
-                    fluid={
-                      newsItem.frontmatter.featuredImage.childImageSharp.fluid
-                    }
-                  />
-                </Link>
-              </div>
+        <div className="section__content">
+          <div className="card">
+            <div className="card__image">
+              <Link to={newsItem.fields.slug}>
+                <Image name={newsItem.frontmatter.featuredImage}></Image>
+              </Link>
             </div>
-            <div className="col-sm-8">
-              <div className="card-body">
-                <h5 className="card-title">{newsItem.frontmatter.title}</h5>
-                <p className="card-text">{newsItem.excerpt}</p>
-                <p className="card-text">
-                  <small className="text-muted">
-                    {newsItem.frontmatter.creationdate}
-                  </small>
-                </p>
-              </div>
+            <div className="card__header">{newsItem.frontmatter.title}</div>
+            <div className="card__content">{newsItem.excerpt}</div>
+            <div className="card__footer">
+              {newsItem.frontmatter.creationdate}
             </div>
           </div>
         </div>

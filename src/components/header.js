@@ -1,11 +1,36 @@
 import React from "react";
-import Menu from "./menu.js";
-const Header = ({ siteTitle, menuLinks, isFullPageLayout,...otherProps}) => {
-  const {className} = otherProps;  
-  return (
-    <header {...{className}}>     
-      <Menu {...{menuLinks, siteTitle, isFullPageLayout}}></Menu>     
-    </header>
-  );
+import Menu from "./navbar/menu.js";
+import Background from "./background.js";
+const Header = ({ siteTitle, menuLinks, ...otherProps }) => {
+  let { className, navbarExtraStyles, headerImage } = otherProps;
+
+  console.log("header:", navbarExtraStyles, headerImage);
+  console.log("image:", headerImage);
+
+  className = `header ${className ? className : ""}`;
+  if (headerImage)
+    return (
+      <header {...{ className }}>
+        <Background imageName={headerImage}>
+          <Menu
+            {...{ menuLinks, siteTitle }}
+            {...(navbarExtraStyles
+              ? { navbarExtraStyles: navbarExtraStyles }
+              : {})}
+          ></Menu>
+        </Background>
+      </header>
+    );
+  else
+    return (
+      <header {...{ className }}>
+        <Menu
+          {...{ menuLinks, siteTitle }}
+          {...(navbarExtraStyles
+            ? { navbarExtraStyles: navbarExtraStyles }
+            : {})}
+        ></Menu>
+      </header>
+    );
 };
 export default Header;

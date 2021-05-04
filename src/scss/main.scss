@@ -1,5 +1,5 @@
 // import bootstrap SCSS
-@import "../../node_modules/bootstrap/scss/bootstrap";
+//@import "../../node_modules/bootstrap/scss/bootstrap";
 
 // import custom SCSS
 @import "./abstracts/variables";
@@ -8,18 +8,27 @@
 
 @import "./base/reset";
 @import "./base/typography";
+@import "./base/spacing";
+@import "./base/size";
 @import "./layout/body";
 @import "./layout/section";
-@import "./layout/footer";
 @import "./layout/header";
-@import "./layout/navigation";
+@import "./layout/nav";
 @import "./layout/main";
-@import "./layout/col-grid";
-@import "./components/background-image";
-@import "./components/image";
-@import "./base/spacing";
+@import "./layout/footer";
+@import "./layout/master";
 
+//@import "./layout/col-grid";
+//@import "./layout/flex-section";
+//@import "./components/background-image";
+//@import "./components/image";
 
+@import "./components/menu";
+@import "./components/card";
+@import "./components/navbar";
+@import "./components/carousel";
+@import "./components/quote";
+@import "./components/background";
 
 
 

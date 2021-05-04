@@ -1,9 +1,13 @@
 import React from "react";
 import { graphql, useStaticQuery } from "gatsby";
 import BackgroundImage from "gatsby-background-image";
-
-const Col = ({ children, backgroundImageName, className }) => {
-  const classValue = `col-grid__col ${className ? className : ""}`;
+/**
+ * this will be a section background by default
+ * NB : currently, a section background cannot pass extra classes (only .section_background)
+ *  */ 
+const Background = ({ children, imageName, className }) => {
+  //const classValue = `${className ? className : "section__background"}`;
+  const classValue = `background ${className ? className : ""}`;
   const data = useStaticQuery(graphql`
     {
       allFile(filter: { sourceInstanceName: { eq: "images" } }) {
@@ -22,7 +26,7 @@ const Col = ({ children, backgroundImageName, className }) => {
   `);
 
   if (
-    !backgroundImageName ||
+    !imageName ||
     !data.allFile.edges ||
     data.allFile.edges.length === 0
   )
@@ -31,14 +35,14 @@ const Col = ({ children, backgroundImageName, className }) => {
   const requiredImage = data.allFile.edges.find(
     (image) =>
       image.node.childImageSharp &&
-      image.node.childImageSharp.fluid.originalName === backgroundImageName
+      image.node.childImageSharp.fluid.originalName === imageName
   );
-  console.log("image found", requiredImage);
+  //console.log("image found", requiredImage);
   if (!requiredImage) {
     return (
       <div className={classValue}>
         <h3 style={{ color: "red" }}>
-          The image {backgroundImageName} does not exist !
+          The image {imageName} does not exist !
         </h3>
         {children}
       </div>
@@ -46,7 +50,6 @@ const Col = ({ children, backgroundImageName, className }) => {
   }
 
   return (
-    /* this creates a section with a background image*/
     <BackgroundImage
       Tag="section"
       className={classValue}
@@ -57,4 +60,4 @@ const Col = ({ children, backgroundImageName, className }) => {
   );
 };
 
-export default Col;
+export default Background;

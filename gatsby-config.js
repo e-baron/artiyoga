@@ -9,12 +9,33 @@ module.exports = {
         link: `/`,
       },
       {
-        name: `About me`,
-        link: `/about-me`,       
+        name: "Lessen",
+        link: "",
+        subMenu: [
+          { name: "Groeplessen", link: "/lessen/groep" },
+          { name: "Bedrijfslessen", link: "lessen/bedrijfs" },
+          { name: "Privé Yoga", link: "lessen/prive" },
+          { name: "Online Yoga", link: "lessen/online" },
+          { name: "Video Yogaopnames", link: "lessen/video" },
+        ],
+      },
+      {
+        name: `About`,
+        link: ``,
+        subMenu: [
+          {
+            name: `Kati`,
+            link: `/about/kati`,
+          },
+          {
+            name: `Yogastijlen`,
+            link: `/about/yogastijlen`,
+          },
+        ],
       },
       {
         name: `News`,
-        link: `/news`,        
+        link: `/news`,
       },
       {
         name: `Contact`,
@@ -22,14 +43,14 @@ module.exports = {
       },
     ],
   },
-  plugins: [   
+  plugins: [
     "gatsby-plugin-react-helmet",
     {
       resolve: "gatsby-plugin-manifest",
       options: {
         icon: "src/images/icon.png",
       },
-    },   
+    },
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
     {
@@ -46,15 +67,15 @@ module.exports = {
         name: "pages",
         path: "./src/pages",
       },
-      __key: "pages",      
-    }, 
+      __key: "pages",
+    },
     {
-      resolve: 'gatsby-source-filesystem',
+      resolve: "gatsby-source-filesystem",
       options: {
-        name: 'page-content',
+        name: "page-content",
         path: `./src/page-content`,
       },
-    },   
+    },
     `gatsby-remark-images`,
     {
       resolve: `gatsby-plugin-mdx`,
@@ -64,23 +85,23 @@ module.exports = {
             resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 1200,
-              linkImagesToOriginal:	true,
+              linkImagesToOriginal: true,
             },
           },
         ],
-        extensions: ['.mdx', '.md'], 
-        remarkPlugins: [emoji],             
+        extensions: [".mdx", ".md"],
+        remarkPlugins: [emoji],
       },
     },
     `gatsby-plugin-postcss`,
     `gatsby-plugin-sass`,
     {
-      resolve: 'gatsby-plugin-react-svg',
+      resolve: "gatsby-plugin-react-svg",
       options: {
         rule: {
-          include: /\.inline\.svg$/
-        }
-      }
+          include: /\.inline\.svg$/,
+        },
+      },
     },
     /*
     {
