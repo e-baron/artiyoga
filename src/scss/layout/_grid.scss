@@ -1,0 +1,21 @@
+.grid {
+  display: grid;
+  //grid-template-columns: 100vw;
+  //grid-auto-rows: 5vh;//minmax(5vh, auto);
+  grid-template-areas: "content";
+  
+  &__background-image-wrapper {    
+    grid-area: content;
+    max-height: 100%;
+    &__image{    
+        padding: 0;
+      }
+  }
+
+  &__content {
+    grid-area: content;
+    position: relative;
+    //place-items: center;
+    display: grid;
+  }
+}
