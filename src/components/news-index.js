@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, graphql, useStaticQuery } from "gatsby";
-import Img from "gatsby-image";
+import { GatsbyImage } from "gatsby-plugin-image";
 import Image from "./image.js";
 
 /**
@@ -9,41 +9,37 @@ import Image from "./image.js";
  */
 const NewsIndex = () => {
   const data = useStaticQuery(
-    graphql`
-      query newsIndex {
-        allMdx(
-          sort: { fields: frontmatter___creationdate, order: DESC }
-          filter: { slug: { regex: "/news/.+/" } }
-        ) {
-          edges {
-            node {
-              id
-              excerpt(pruneLength: 100)
-              fields {
-                slug
-              }
-              frontmatter {
-                title
-                creationdate(formatString: "DD/MM/YYYY")
-                featuredImage
-              }
-            }
-          }
+    graphql`query newsIndex {
+  allMdx(
+    sort: {fields: frontmatter___creationdate, order: DESC}
+    filter: {slug: {regex: "/news/.+/"}}
+  ) {
+    edges {
+      node {
+        id
+        excerpt(pruneLength: 100)
+        fields {
+          slug
         }
-        allFile(filter: { sourceInstanceName: { eq: "images" } }) {
-          edges {
-            node {
-              childImageSharp {
-                fluid(quality: 90, maxWidth: 4608) {
-                  ...GatsbyImageSharpFluid_withWebp
-                  originalName
-                }
-              }
-            }
-          }
+        frontmatter {
+          title
+          creationdate(formatString: "DD/MM/YYYY")
+          featuredImage
         }
       }
-    `
+    }
+  }
+  allFile(filter: {sourceInstanceName: {eq: "images"}}) {
+    edges {
+      node {
+        childImageSharp {
+          gatsbyImageData(quality: 90, layout: FULL_WIDTH)
+        }
+      }
+    }
+  }
+}
+`
   );
 
   const { edges: news } = data.allMdx;

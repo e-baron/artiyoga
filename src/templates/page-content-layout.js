@@ -53,31 +53,28 @@ export default function PageTemplate({ data: { mdx } }) {
   );
 }
 
-export const pageQuery = graphql`
-  query pagesAndImages($slug: String) {
-    mdx(fields: { slug: { eq: $slug } }) {
-      id
-      body
-      slug
-      frontmatter {
-        title
-        creationdate(formatString: "DD/MM/YYYY")
-        navbarExtraStyles
-        headerImage
-        featuredImage
-      }
+export const pageQuery = graphql`query pagesAndImages($slug: String) {
+  mdx(fields: {slug: {eq: $slug}}) {
+    id
+    body
+    slug
+    frontmatter {
+      title
+      creationdate(formatString: "DD/MM/YYYY")
+      navbarExtraStyles
+      headerImage
+      featuredImage
     }
-    allFile(filter: { sourceInstanceName: { eq: "images" } }) {
-      edges {
-        node {
-          childImageSharp {
-            fluid(quality: 90, maxWidth: 4608) {
-              ...GatsbyImageSharpFluid_withWebp
-              originalName
-            }
-          }
-        }
+  }
+  allFile(filter: {sourceInstanceName: {eq: "images"}}) {
+    edges {
+      node {
+        childImageSharp {
+          gatsbyImageData(quality: 90, layout: FULL_WIDTH)
+        }        
+        relativePath
       }
     }
   }
+}
 `;
