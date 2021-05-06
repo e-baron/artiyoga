@@ -3,6 +3,10 @@ import { Link, graphql, useStaticQuery } from "gatsby";
 import Img from "gatsby-image";
 import Image from "./image.js";
 
+/**
+ * Provides an excerpt of 100 chars (see pruneLenght in graphql query)
+ * @returns 
+ */
 const NewsIndex = () => {
   const data = useStaticQuery(
     graphql`
@@ -14,7 +18,7 @@ const NewsIndex = () => {
           edges {
             node {
               id
-              excerpt
+              excerpt(pruneLength: 100)
               fields {
                 slug
               }

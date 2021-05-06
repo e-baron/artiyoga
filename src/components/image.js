@@ -6,10 +6,10 @@ import Img from "gatsby-image";
  * Based on a name of a picture (WARNING : there cannot be duplicates), fill a container
  * with a picture.
  * NB : the picture is responsive and full fill the container.
- * @param {*} param0 
- * @returns 
+ * @param {*} param0
+ * @returns
  */
-const Image = ({ children, name}) => {  
+const Image = ({ children, name }) => {
   const data = useStaticQuery(graphql`
     {
       allFile(filter: { sourceInstanceName: { eq: "images" } }) {
@@ -47,8 +47,8 @@ const Image = ({ children, name}) => {
 
   return (
     <Img
-      fluid={requiredImage.node.childImageSharp.fluid}     
-      style={{ height: "100%", width: "100%" }}
+      fluid={requiredImage.node.childImageSharp.fluid}
+      style={{ height: "100%", width: "100%", zIndex: 2 }}     
     />
   );
 };

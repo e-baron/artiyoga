@@ -1,15 +1,16 @@
 $max-lines: 2;
 
 .card {
-  margin-top : 1rem;
-  padding-left: 1rem;
-  padding-right: 1rem;  
+  //margin-top : 1rem;
+  //padding-left: 1rem;
+  //padding-right: 1rem;  
   display: grid;
   grid-template-rows: 25vh 5rem 6rem 5rem;
   @include emphasized-text();
 
   &__image {
     //flex: 0 0 100%;
+    //z-index: 0;
 
     //background: center/cover no-repeat;
   }

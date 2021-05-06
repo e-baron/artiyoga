@@ -28,8 +28,13 @@
   max-width: 100%;
   margin-top: 1rem;
 
-  &--no-background {
-    background-image: none;
-    background-color: transparent;
+  /* to deal with carousel, it shall not be displayed as a flex */
+  &__background {
+    display: block;
+
+    &--transparent {
+      background-image: none;
+      background-color: transparent;
+    }
   }
 }

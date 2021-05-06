@@ -40,12 +40,14 @@ export default function PageTemplate({ data: { mdx } }) {
       {...(mdx.frontmatter.navbarExtraStyles
         ? { navbarExtraStyles: mdx.frontmatter.navbarExtraStyles }
         : {})}
-        {...(mdx.frontmatter.headerImage
-          ? { headerImage: mdx.frontmatter.headerImage }
-          : {})}
+      {...(mdx.frontmatter.headerImage
+        ? { headerImage: mdx.frontmatter.headerImage }
+        : {})}
     >
       <MDXProvider components={shortcodes}>
-        <MDXRenderer>{mdx.body}</MDXRenderer>
+        <div className="page">
+          <MDXRenderer>{mdx.body}</MDXRenderer>
+        </div>
       </MDXProvider>
     </MainLayout>
   );
@@ -62,7 +64,7 @@ export const pageQuery = graphql`
         creationdate(formatString: "DD/MM/YYYY")
         navbarExtraStyles
         headerImage
-        featuredImage        
+        featuredImage
       }
     }
     allFile(filter: { sourceInstanceName: { eq: "images" } }) {

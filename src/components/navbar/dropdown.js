@@ -55,9 +55,9 @@ const Dropdown = ({ linkName, subMenu }) => {
         aria-labelledby="navbarDropdown"
       >
         {subMenu.map((subLink, indexSubMenu) => (
-          <li key={"sli" + indexSubMenu}>
+          <li key={"sli" + indexSubMenu} className="navbar__menu__list__item__dropdown-menu__item">
             <Link
-              className="navbar__menu__list__item__link"
+              className="navbar__menu__list__item__dropdown-menu__item__link"
               aria-current="page"
               to={subLink.link}
             >

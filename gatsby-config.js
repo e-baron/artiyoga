@@ -12,11 +12,11 @@ module.exports = {
         name: "Lessen",
         link: "",
         subMenu: [
-          { name: "Groeplessen", link: "/lessen/groep" },
-          { name: "Bedrijfslessen", link: "lessen/bedrijfs" },
-          { name: "Privé Yoga", link: "lessen/prive" },
-          { name: "Online Yoga", link: "lessen/online" },
-          { name: "Video Yogaopnames", link: "lessen/video" },
+          { name: "Groeplessen", link: "/lessons/groups" },
+          { name: "Bedrijfslessen", link: "/lessons/companies" },
+          { name: "Privé Yoga", link: "/lessons/personal" },
+          { name: "Online Yoga", link: "/lessons/online" },
+          { name: "Video Yogaopnames", link: "/lessons/video" },
         ],
       },
       {
@@ -29,7 +29,7 @@ module.exports = {
           },
           {
             name: `Yogastijlen`,
-            link: `/about/yogastijlen`,
+            link: `/about/yogastyles`,
           },
         ],
       },
@@ -51,6 +51,7 @@ module.exports = {
         icon: "src/images/icon.png",
       },
     },
+    `gatsby-plugin-image`,
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
     {

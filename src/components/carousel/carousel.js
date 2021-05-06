@@ -59,8 +59,8 @@ const Carousel = ({ children, backgroundImageName }) => {
 
   if (backgroundImageName) {
     return (
-      <div className="carousel__wrapper carousel__wrapper--no-background">
-        <Background imageName={backgroundImageName} className=" ">{carousel}</Background>
+      <div className="carousel__wrapper">
+        <Background imageName={backgroundImageName} className="carousel__wrapper__background">{carousel}</Background>
       </div>
     );
   }

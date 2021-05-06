@@ -9,9 +9,11 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  padding: 0.5rem;
+  padding: 1rem;
   width: 100%;
   flex-basis: 100%;
+
+  z-index: 100;
 
   @media only screen and (min-width: $lg) {
     flex-wrap: nowrap;
@@ -52,7 +54,7 @@
   &__brand {
     padding-top: 0.3125rem;
     padding-bottom: 0.3125rem;
-    padding-left: 0.3125rem;
+    //padding-left: 0.3125rem;
     margin-right: 1rem;
     font-size: 1.25rem;
     text-decoration: none;
@@ -65,6 +67,7 @@
     flex-basis: 100%;
     flex-grow: 1;
     align-items: center;
+    //justify-content: flex-start;
 
     &--collapse {
       display: flex;
@@ -88,14 +91,27 @@
       &__item {
         display: list-item;
         position: relative;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+
+        @media only screen and (min-width: $lg) {
+          padding-left: 0.5rem;
+          padding-right: 0.5rem;
+        }
+
         &__link {
           display: block;
-          padding: 0.5rem 1rem;
           text-decoration: none;
           transition: color 0.15s ease-in-out,
             background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
           color: $secondary-color;
           cursor: pointer;
+
+          &:hover,
+              &:focus {
+                color: darken($secondary-color, 20%);                 
+              }
+
           &--dropdown-toggle {
             //add a triangle
             &::after {
@@ -128,16 +144,52 @@
           left: 0;
           margin-top: 0.125rem;
           display: none;
-          position: absolute;
+          position: static;
           // change text color
+
+          @media only screen and (min-width: $lg) {
+            position: absolute;
+            //margin-bottom: 0;
+          }
 
           &--collapsed {
             display: block;
           }
 
+          &__item {
+            display: list-item;
+            position: relative;
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+            padding-left: 0.5rem;
+            padding-right: 0.5rem;
+
+            &:hover,
+              &:focus {                       
+                background-color: lighten($tertiary-color, 70%);   
+              }
+
+            &__link {
+              display: block;
+              text-decoration: none;
+              transition: color 0.15s ease-in-out,
+                background-color 0.15s ease-in-out,
+                border-color 0.15s ease-in-out;
+              color: $tertiary-color;
+              cursor: pointer;
+
+              &:hover,
+              &:focus {
+                color: lighten($tertiary-color, 20%);                 
+              }
+
+            }
+          }
+
+          /*
           .navbar__menu__list__item__link {
             color: $tertiary-color;
-          }
+          }*/
         }
       }
     }
@@ -155,9 +207,8 @@
 
   // show the navbar at the top of the page, not above !
   &--top-of-page {
-    position: fixed;
+    position: absolute;
     top: 0;
-    left: 0;
-    z-index: 1;
+    left: 0;    
   }
 }

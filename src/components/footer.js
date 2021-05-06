@@ -24,7 +24,11 @@ const Footer = ({ siteTitle, ...otherProps }) => {
         <div className="footer__icons">
           <ul className="menu">
             <li>
-              <a href="mailto:baroni.kati@gmail.com" target="_blank">
+              <a
+                href="mailto:baroni.kati@gmail.com"
+                data-email="baroni.kati@gmail.com"
+                target="_blank"
+              >
                 <FontAwesomeIcon icon={faEnvelope} />
               </a>
             </li>

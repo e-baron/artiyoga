@@ -7,9 +7,6 @@
 @import "./abstracts/mixins";
 
 @import "./base/reset";
-@import "./base/typography";
-@import "./base/spacing";
-@import "./base/size";
 @import "./layout/body";
 @import "./layout/section";
 @import "./layout/header";
@@ -17,19 +14,24 @@
 @import "./layout/main";
 @import "./layout/footer";
 @import "./layout/master";
+@import "./layout/page";
 
 //@import "./layout/col-grid";
 //@import "./layout/flex-section";
 //@import "./components/background-image";
 //@import "./components/image";
 
+@import "./components/background";
 @import "./components/menu";
 @import "./components/card";
 @import "./components/navbar";
 @import "./components/carousel";
 @import "./components/quote";
-@import "./components/background";
 
+// those helper "functions" shall be called at the end to override styles from components
+@import "./base/typography";
+@import "./base/spacing";
+@import "./base/size";
 
 
 

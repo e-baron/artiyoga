@@ -13,7 +13,11 @@
     li:last-of-type {
       margin-right: 0;
     }
-    
+
+    a[href^="mailto"]:hover:after {
+      white-space: pre;
+      content: "\a"attr(data-email);
+    }
   }
 
   &__background {
@@ -22,6 +26,6 @@
     justify-content: space-between;
     min-height: 8vh;
 
-    padding: 1rem;  
+    padding: 1rem;
   }
 }

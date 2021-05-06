@@ -11,7 +11,7 @@
 
   width: 100%;
   min-height: 10px;
-  z-index: 1;
+  z-index: 5;
 
   &__content {
     // The flex shorthand allows you to set the three values in this order — flex-grow, flex-shrink, flex-basis
@@ -23,6 +23,10 @@
     //in a flex container, where you have box-sizing: border-box, and the width or flex-basis is used to calculate length, the boxes will render evenly regardless of padding.
     box-sizing: border-box;
 
+    padding-top: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    
     @media only screen and (min-width: $sm) {
       flex-basis: 50%;
     }
@@ -43,11 +47,35 @@
     min-height: 5vh;
     text-align: center;
     align-self: flex-end;
+    justify-content:center ;
+
   }
 
-  /* Deal with background elements within a section or within a*/
+  /* Deal with background elements within a section or within a : note that this is normally not necessary
+  to use it if .background is used instead of .section_background */
 
+  &__background {
+    display: flex;
+    flex-flow: row wrap;
 
+    width: 100%;
+    min-height: 10px;
+
+    background-size: cover;
+    z-index: 1;
+  }
 
   /* Deal with section modifiers */
 }
+
+/*
+// add padding-bottom only if next element is not a section_content or a section
+.section__content + .section_content:not(.section__content, .section){
+  padding-bottom: 1rem;
+}
+
+// add padding-bottom to section only if there is no .section_content children
+.section .section:not(.section__content, .section){
+  padding-bottom: 1rem;
+}
+*/
