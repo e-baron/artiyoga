@@ -1,19 +1,15 @@
 .background {
   display: flex;
+  z-index: 0;
 
-  /* to be tested */
-  /*
-  flex-flow: row wrap;
-
-  width: 100%;
-  min-height: 10px;
-
-  background-size: cover;*/
-  &__image{
-    display:grid;
+  &__image {
+    display: grid;
   }
 
-  
+  &--header {
+    //ensure that it is on top of page content / section
+    z-index: 10;
+  }
 }
 
 /* to deal with background embedded in a section */ /*

@@ -17,7 +17,7 @@ const Image = ({ children, name }) => {
           childImageSharp {
             gatsbyImageData(quality: 90, layout: FULL_WIDTH)
           }        
-          relativePath
+          base
         }
       }
     }
@@ -30,7 +30,7 @@ const Image = ({ children, name }) => {
   const requiredImage = data.allFile.edges.find(
     (image) =>
       image.node.childImageSharp &&
-      image.node.relativePath === name
+      image.node.base === name
   );
   //console.log("image found", requiredImage);
   if (!requiredImage) {

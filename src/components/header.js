@@ -11,7 +11,7 @@ const Header = ({ siteTitle, menuLinks, ...otherProps }) => {
   if (headerImage)
     return (
       <header {...{ className }}>
-        <Background imageName={headerImage}>
+        <Background imageName={headerImage} className="background--header">
           <Menu
             {...{ menuLinks, siteTitle }}
             {...(navbarExtraStyles
