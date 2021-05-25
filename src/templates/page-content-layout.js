@@ -5,7 +5,7 @@ import { MDXRenderer } from "gatsby-plugin-mdx";
 import { Link } from "gatsby";
 import { Message } from "theme-ui";
 import MainLayout from "../components/main-layout.js";
-import NewsIndex from "../components/news-index.js";
+import NewsIndex from "../components/news/news-index.js";
 import Image from "../components/image.js";
 import Section from "../components/section.js";
 import Content from "../components/content.js";
@@ -30,10 +30,10 @@ const shortcodes = {
   Carousel,
 };
 
-export default function PageTemplate({ data: { mdx } }) {
+export default function PageTemplate({ data: { mdx, allImages } }) {
   shortcodes.PageHeader = withFrontmatter(PageHeader, mdx.frontmatter);
 
-  console.log("page:", mdx.frontmatter.navbarExtraStyles);
+  console.log("page:", allImages.edges);
 
   return (
     <MainLayout
@@ -43,6 +43,13 @@ export default function PageTemplate({ data: { mdx } }) {
       {...(mdx.frontmatter.headerImage
         ? { headerImage: mdx.frontmatter.headerImage }
         : {})}
+      {...(mdx.frontmatter.featuredImage
+        ? { featuredImage: mdx.frontmatter.featuredImage }
+        : {})}
+        {...(mdx.frontmatter.title
+          ? { pageTitle: mdx.frontmatter.title}
+          : {})}
+      {...(allImages && allImages.length > 0 ? { allImages: allImages } : {})}
     >
       <MDXProvider components={shortcodes}>
         <div className="page">
@@ -53,28 +60,34 @@ export default function PageTemplate({ data: { mdx } }) {
   );
 }
 
-export const pageQuery = graphql`query pagesAndImages($slug: String) {
-  mdx(fields: {slug: {eq: $slug}}) {
-    id
-    body
-    slug
-    frontmatter {
-      title
-      creationdate(formatString: "DD/MM/YYYY")
-      navbarExtraStyles
-      headerImage
-      featuredImage
+export const pageQuery = graphql`
+  query pagesAndImages($slug: String) {
+    mdx(fields: { slug: { eq: $slug } }) {
+      id
+      body
+      slug
+      frontmatter {
+        title
+        creationdate(formatString: "DD/MM/YYYY")
+        navbarExtraStyles
+        headerImage
+        featuredImage
+      }
     }
-  }
-  allFile(filter: {sourceInstanceName: {eq: "images"}}) {
-    edges {
-      node {
-        childImageSharp {
-          gatsbyImageData(quality: 90, layout: FULL_WIDTH)
-        }        
-        relativePath
+    allImages: allFile(filter: { sourceInstanceName: { eq: "images" } }) {
+      edges {
+        node {
+          childImageSharp {
+            gatsbyImageData(
+              quality: 90
+              layout: FULL_WIDTH
+              placeholder: TRACED_SVG
+              tracedSVGOptions: { color: "green", background: "grey" }
+            )
+          }
+          base
+        }
       }
     }
   }
-}
 `;

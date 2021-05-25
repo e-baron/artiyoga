@@ -1,7 +1,6 @@
 import React from "react";
 import { Link, graphql, useStaticQuery } from "gatsby";
-import { GatsbyImage } from "gatsby-plugin-image";
-import Image from "./image.js";
+import Image from "../image.js";
 
 /**
  * Provides an excerpt of 100 chars (see pruneLenght in graphql query)
@@ -12,7 +11,7 @@ const NewsIndex = () => {
     graphql`query newsIndex {
   allMdx(
     sort: {fields: frontmatter___creationdate, order: DESC}
-    filter: {slug: {regex: "/news/.+/"}}
+    filter: {slug: {regex: "/news/.+/"}, frontmatter: {offline: {ne: true}}}
   ) {
     edges {
       node {

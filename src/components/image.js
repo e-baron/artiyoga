@@ -10,18 +10,18 @@ import { GatsbyImage } from "gatsby-plugin-image";
  * @returns
  */
 const Image = ({ children, name }) => {
-  const data = useStaticQuery(graphql`{
-    allFile(filter: {sourceInstanceName: {eq: "images"}}) {
-      edges {
-        node {
-          childImageSharp {
-            gatsbyImageData(quality: 90, layout: FULL_WIDTH)
-          }        
-          base
+  const data = useStaticQuery(graphql`{    
+      allFile(filter: { sourceInstanceName: { eq: "images" } }) {
+        edges {
+          node {
+            childImageSharp {
+              gatsbyImageData(quality: 90, layout: FULL_WIDTH, placeholder: TRACED_SVG, tracedSVGOptions: {color:"green", background : "grey"} )
+            }
+            base
+          }
         }
       }
     }
-  }
 `);
 
   if (!name || !data.allFile.edges || data.allFile.edges.length === 0)
@@ -45,7 +45,8 @@ const Image = ({ children, name }) => {
   return (
     <GatsbyImage
       image={requiredImage.node.childImageSharp.gatsbyImageData}
-      style={{ height: "100%", width: "100%", zIndex: 2 }} />
+      style={{ height: "100%", width: "100%", zIndex: 2 }}
+      alt="GatsbyImage" />
   );
 };
 
