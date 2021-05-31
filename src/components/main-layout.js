@@ -63,7 +63,7 @@ const MainLayout = ({
       <main className="main">
         {featuredImage && (
           <div>
-            <Section>
+            <Section className="pt-3">
               <SectionHeader className="section__header--left">
                 {pageTitle}
               </SectionHeader>

@@ -47,9 +47,9 @@ const Carousel = ({ children, backgroundImageName }) => {
       {testimonials.map((testimonial, index) => (
         <div className="quote" key={index}>
           <div className="quote__content">
-            <h1>
+            <h3>
               <MDXRenderer>{testimonial.node.childMdx.body}</MDXRenderer>
-            </h1>
+            </h3>
             <h4>{testimonial.node.childMdx.frontmatter.author}</h4>
           </div>
         </div>

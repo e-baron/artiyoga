@@ -39,6 +39,8 @@
     min-height: 10px; //5vh;
     text-align: center;
     align-self: flex-start;
+    padding-left: 1rem;
+    padding-right: 1rem;
     @include emphasized-text();
 
     &--left{
@@ -53,6 +55,9 @@
     text-align: center;
     align-self: flex-end;
     justify-content:center ;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 1rem;
 
   }
 

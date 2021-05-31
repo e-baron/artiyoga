@@ -21,27 +21,49 @@
 }
 
 @font-face {
-  font-family: "BAloo Bhaina 2 Bold";
+  font-family: "Baloo Bhaina 2 Bold";
   src: url("../fonts/BalooBhaina2-Bold.ttf");
 }
 
 // Headers
 h1 {
-  @include text($family: $font-title, $size: xx-large, $weight: 300, $color: $tertiary-color);
+  @include text(
+    $family: $font-title,
+    $size: xx-large,
+    $weight: 300,
+    $color: $tertiary-color,
+    $lineHeight: 2rem
+  );
 }
 h2 {
-  @include text($family: $font-title, $size: x-large, $weight: 300, $color: $tertiary-color);
+  @include text(
+    $family: $font-title,
+    $size: x-large,
+    $weight: 300,
+    $color: $tertiary-color,
+    $lineHeight: 1.7rem
+  );
 }
 h3 {
   //@include text($family: $font-navigation, $size: x-large, $weight: 300);
-  @include text($family: $font-title, $size: x-large, $weight: 300, $color: $tertiary-color);
+  @include text(
+    $family: $font-title,
+    $size: x-large,
+    $weight: 300,
+    $color: $tertiary-color,
+    $lineHeight: 1.7rem
+  );
 }
 
 .text {
   @include regular-text();
 
   &--light {
-    color: $secondary-color;
+    color: $secondary-color !important;
+  }
+
+  &--italic {
+    font-style: italic !important;
   }
 
   &--emphasized {
