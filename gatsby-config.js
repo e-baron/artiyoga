@@ -1,6 +1,7 @@
 const emoji = require(`remark-emoji`);
 
 module.exports = {
+  pathPrefix: `/artiyoga`,
   siteMetadata: {
     title: "artiYoga",
     description: "artiYoga : Yoga in 1500 Halle with Kati Baroni",
