@@ -28,4 +28,11 @@
 
     padding: 1rem;
   }
+
+  &__logo {
+    font-family: $font-navigation;
+    font-weight: 300; // normal ; // or from 100 to 900
+    font-size: 1.7rem;
+    color: lighten($secondary-color, 40%);
+  }
 }

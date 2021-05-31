@@ -8,7 +8,8 @@ import Content from "./content.js";
 import Header from "./header.js";
 import Footer from "./footer.js";
 import Image from "./image.js";
-import { Helmet } from "react-helmet";
+import SEO from "./seo/seo.js";
+//import { Helmet } from "react-helmet";
 import "../scss/main.scss";
 
 const MainLayout = ({
@@ -18,6 +19,7 @@ const MainLayout = ({
   featuredImage,
   pageTitle,
   allImages,
+  frontmatter,
 }) => {
   const data = useStaticQuery(
     graphql`
@@ -39,13 +41,17 @@ const MainLayout = ({
     `
   );
 
-  console.log("main-layout:", navbarExtraStyles, featuredImage);
+  console.log("main-layout:", navbarExtraStyles, featuredImage, frontmatter);
 
   return (
     <div className="master">
-
-      {/* Dealing with Meta Tags : page title.... */}
-      <Helmet>{pageTitle && <title>{pageTitle}</title>}</Helmet>
+      {/* Dealing with Meta Tags : page title.... 
+      Use the SEO component*/}
+      {/* <Helmet>{pageTitle && <title>{pageTitle}</title>}</Helmet> */}
+      <SEO
+        title={pageTitle}
+        {...(frontmatter ? { description: frontmatter.description } : {})}
+      />
 
       <Header
         siteTitle={data.site.siteMetadata.title}
@@ -58,7 +64,9 @@ const MainLayout = ({
         {featuredImage && (
           <div>
             <Section>
-              <SectionHeader>{pageTitle}</SectionHeader>
+              <SectionHeader className="section__header--left">
+                {pageTitle}
+              </SectionHeader>
               <Content className="vh-50">
                 <Image name={featuredImage} />{" "}
               </Content>

@@ -15,11 +15,26 @@
   src: url("../fonts/Apercu Pro Regular.otf");
 }
 
+@font-face {
+  font-family: "Roboto Regular";
+  src: url("../fonts/Roboto-Regular.ttf");
+}
+
+@font-face {
+  font-family: "BAloo Bhaina 2 Bold";
+  src: url("../fonts/BalooBhaina2-Bold.ttf");
+}
+
 // Headers
-h1,
-h2,
+h1 {
+  @include text($family: $font-title, $size: xx-large, $weight: 300, $color: $tertiary-color);
+}
+h2 {
+  @include text($family: $font-title, $size: x-large, $weight: 300, $color: $tertiary-color);
+}
 h3 {
-  @include text($family: $font-navigation, $size: x-large, $weight: 300);
+  //@include text($family: $font-navigation, $size: x-large, $weight: 300);
+  @include text($family: $font-title, $size: x-large, $weight: 300, $color: $tertiary-color);
 }
 
 .text {

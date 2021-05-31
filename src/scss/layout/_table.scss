@@ -10,7 +10,6 @@
   text-indent: initial;
   border-spacing: 2px;
 
-
   td {
     padding: 0.75rem;
     vertical-align: top;
@@ -37,11 +36,22 @@
     border-left: 0;
     border: 1px solid #ccc;
     border-bottom: 0;
-    border-left: 0;  
+    border-left: 0;
     vertical-align: top;
     text-align: left;
     width: 25%;
     word-wrap: break-word;
     hyphens: auto;
   }
+
+  /*
+  &--small {
+    table-layout: auto;
+    td {
+      width: auto;
+    }
+    th {      
+      width: 1%;
+    }
+  }*/
 }

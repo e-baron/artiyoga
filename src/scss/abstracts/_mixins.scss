@@ -37,7 +37,7 @@
 }
 
 @mixin emphasized-text() {
-  @include text($family: $font-navigation, $size: x-large, $weight: 300);
+  @include text($family: $font-title, $size: x-large, $weight: 300);
 }
 
 /* Generate spacing classes (from : https://stackoverflow.com/questions/58069059/dynamic-spacing-classes-with-sass) */

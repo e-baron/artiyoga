@@ -19,7 +19,7 @@ const Footer = ({ siteTitle, ...otherProps }) => {
     <footer className={classValue}>
       <Background imageName="footer.jpg" className="footer__background">
         <div className="">
-          <h3>{siteTitle}</h3>
+          <h3 className="footer__logo">{siteTitle}</h3>
         </div>
         <div className="footer__icons">
           <ul className="menu">

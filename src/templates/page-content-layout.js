@@ -3,7 +3,6 @@ import { graphql } from "gatsby";
 import { MDXProvider } from "@mdx-js/react";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 import { Link } from "gatsby";
-import { Message } from "theme-ui";
 import MainLayout from "../components/main-layout.js";
 import NewsIndex from "../components/news/news-index.js";
 import Image from "../components/image.js";
@@ -18,7 +17,6 @@ import { withFrontmatter } from "../components/hoc/hoc.js";
 
 const shortcodes = {
   Link,
-  Message,
   NewsIndex,
   Image,
   Section,
@@ -37,6 +35,7 @@ export default function PageTemplate({ data: { mdx, allImages } }) {
 
   return (
     <MainLayout
+      {...(mdx.frontmatter ? { frontmatter: mdx.frontmatter } : {})}
       {...(mdx.frontmatter.navbarExtraStyles
         ? { navbarExtraStyles: mdx.frontmatter.navbarExtraStyles }
         : {})}
@@ -46,9 +45,7 @@ export default function PageTemplate({ data: { mdx, allImages } }) {
       {...(mdx.frontmatter.featuredImage
         ? { featuredImage: mdx.frontmatter.featuredImage }
         : {})}
-        {...(mdx.frontmatter.title
-          ? { pageTitle: mdx.frontmatter.title}
-          : {})}
+      {...(mdx.frontmatter.title ? { pageTitle: mdx.frontmatter.title } : {})}
       {...(allImages && allImages.length > 0 ? { allImages: allImages } : {})}
     >
       <MDXProvider components={shortcodes}>
@@ -72,6 +69,7 @@ export const pageQuery = graphql`
         navbarExtraStyles
         headerImage
         featuredImage
+        description
       }
     }
     allImages: allFile(filter: { sourceInstanceName: { eq: "images" } }) {

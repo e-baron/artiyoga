@@ -40,6 +40,11 @@
     text-align: center;
     align-self: flex-start;
     @include emphasized-text();
+
+    &--left{
+      text-align: left;
+      padding-left: 1rem;
+    }
   }
 
   &__footer {

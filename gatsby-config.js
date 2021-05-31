@@ -3,6 +3,10 @@ const emoji = require(`remark-emoji`);
 module.exports = {
   siteMetadata: {
     title: "artiYoga",
+    description: "artiYoga : Yoga in 1500 Halle with Kati Baroni",
+    url: "https://www.artiyoga.com", // No trailing slash allowed!
+    //image: "/images/snape.jpg", // Path to your image you placed in the 'static' folder
+    //twitterUsername: "@occlumency",
     menuLinks: [
       {
         name: `Home`,
@@ -44,13 +48,7 @@ module.exports = {
     ],
   },
   plugins: [
-    "gatsby-plugin-react-helmet",
-    {
-      resolve: "gatsby-plugin-manifest",
-      options: {
-        icon: "src/images/icon.png",
-      },
-    },
+    "gatsby-plugin-react-helmet",   
     `gatsby-plugin-image`,
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
@@ -104,6 +102,18 @@ module.exports = {
         },
       },
     },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `artiYoga`,
+        short_name: `artiYoga`,
+        start_url: `/`,
+        background_color: `#f7f0eb`,
+        theme_color: `#a2466c`,
+        display: `standalone`,
+        icon: `src/images/om.svg`, 
+      },
+    },`gatsby-plugin-offline`,
     /*
     {
       resolve: `gatsby-transformer-remark`,
