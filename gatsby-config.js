@@ -1,11 +1,13 @@
 const emoji = require(`remark-emoji`);
+const siteURL = "https://e-baron.gitlab.io/artiyoga"; //"https://www.artiyoga.com", // No trailing slash allowed!
 
 module.exports = {
   pathPrefix: `/artiyoga`,
   siteMetadata: {
     title: "artiYoga",
     description: "artiYoga : Yoga in 1500 Halle with Kati Baroni",
-    url: "https://www.artiyoga.com", // No trailing slash allowed!
+    url: siteURL,
+    siteUrl: siteURL, // config for gatsby-plugin-robots-txt
     //image: "/images/snape.jpg", // Path to your image you placed in the 'static' folder
     //twitterUsername: "@occlumency",
     menuLinks: [
