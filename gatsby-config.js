@@ -115,7 +115,9 @@ module.exports = {
         theme_color: `#a2466c`,
         display: `standalone`,
         icon: `src/images/om.svg`,
-        purpose: `any maskable`,
+        icon_options: {
+          purpose: `any maskable`,
+        },
       },
     },
     `gatsby-plugin-offline`,
