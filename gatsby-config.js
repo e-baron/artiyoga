@@ -49,7 +49,7 @@ module.exports = {
     ],
   },
   plugins: [
-    "gatsby-plugin-react-helmet",   
+    "gatsby-plugin-react-helmet",
     `gatsby-plugin-image`,
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
@@ -112,9 +112,12 @@ module.exports = {
         background_color: `#f7f0eb`,
         theme_color: `#a2466c`,
         display: `standalone`,
-        icon: `src/images/om.svg`, 
+        icon: `src/images/om.svg`,
+        purpose: `any maskable`,
       },
-    },`gatsby-plugin-offline`,
+    },
+    `gatsby-plugin-offline`,
+    "gatsby-plugin-robots-txt",
     /*
     {
       resolve: `gatsby-transformer-remark`,

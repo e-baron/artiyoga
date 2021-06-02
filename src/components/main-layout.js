@@ -51,6 +51,7 @@ const MainLayout = ({
       <SEO
         title={pageTitle}
         {...(frontmatter ? { description: frontmatter.description } : {})}
+        language="fr"
       />
 
       <Header

@@ -16,15 +16,11 @@ const query = graphql`
   }
 `;
 
-const Seo = ({ title, description }) => {
+const Seo = ({ title, description, language }) => {
   const { pathname } = useLocation();
   const { site } = useStaticQuery(query);
 
-  const {
-    defaultTitle,
-    defaultDescription,
-    siteUrl,
-  } = site.siteMetadata;
+  const { defaultTitle, defaultDescription, siteUrl } = site.siteMetadata;
 
   const seo = {
     title: title || defaultTitle,
@@ -36,7 +32,10 @@ const Seo = ({ title, description }) => {
   console.log("seo: URL", `${siteUrl}${pathname}`);
 
   return (
-    <Helmet title={seo.title}>
+    <Helmet
+      title={seo.title}
+      {...(language ? { htmlAttributes: { lang: language } } : {})}
+    >
       <meta name="description" content={seo.description} />
 
       {seo.url && <meta property="og:url" content={seo.url} />}
