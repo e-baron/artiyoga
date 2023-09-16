@@ -41,7 +41,7 @@ const Footer = ({ siteMetaData, frontmatter, ...otherProps}) => {
                   data-email={siteMetaData.authorEmail}
                   target="_blank"
                 >
-                  <FontAwesomeIcon icon={faEnvelope} />
+                  <FontAwesomeIcon icon={faEnvelope} fixedWidth size="1x"/>
                 </a>
               </li>
             ) : (
@@ -52,7 +52,7 @@ const Footer = ({ siteMetaData, frontmatter, ...otherProps}) => {
             siteMetaData.facebookUrl.length ? (
               <li>
                 <a href={siteMetaData.facebookUrl} target="_blank">
-                  <FontAwesomeIcon icon={faFacebook} />
+                  <FontAwesomeIcon icon={faFacebook} fixedWidth size="1x"/>
                 </a>
               </li>
             ) : (
@@ -63,7 +63,7 @@ const Footer = ({ siteMetaData, frontmatter, ...otherProps}) => {
             siteMetaData.instagramUrl.length ? (
               <li>
                 <a href={siteMetaData.instagramUrl} target="_blank">
-                  <FontAwesomeIcon icon={faInstagram} />
+                  <FontAwesomeIcon icon={faInstagram} fixedWidth size="1x" />
                 </a>
               </li>
             ) : (
@@ -74,7 +74,7 @@ const Footer = ({ siteMetaData, frontmatter, ...otherProps}) => {
             siteMetaData.youtubeUrl.length ? (
               <li>
                 <a href={siteMetaData.youtubeUrl} target="_blank">
-                  <FontAwesomeIcon icon={faYoutube} />
+                  <FontAwesomeIcon icon={faYoutube} fixedWidth size="1x" />
                 </a>
               </li>
             ) : (
