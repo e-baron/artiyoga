@@ -18,10 +18,6 @@
 @import "./layout/grid";
 @import "./layout/table";
 
-//@import "./layout/col-grid";
-//@import "./layout/flex-section";
-//@import "./components/background-image";
-//@import "./components/image";
 
 @import "./components/background";
 @import "./components/menu";
@@ -30,6 +26,15 @@
 @import "./components/carousel";
 @import "./components/quote";
 @import "./components/schedule";
+@import "./components/list";
+@import "./components/index";
+@import "./components/spinner";
+@import "./components/summary";
+@import "./components/counter";
+@import "./components/codeblock";
+@import "./components/scrollable-image";
+@import "./components/page-menu";
+@import "./components/path-viewer";
 
 // those helper "functions" shall be called at the end to override styles from components
 @import "./base/typography";

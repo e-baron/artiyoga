@@ -1,8 +1,16 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Link } from "gatsby";
+import MenuItem from "./menu-item";
 
-const Dropdown = ({ linkName, subMenu }) => {
+const Dropdown = ({
+  itemData,
+  i18nPluginOptions,
+  locale,
+  isAuthenticated,
+  key,
+}) => {
   // ref to deal with dropdown (submenu items)
+  const { name, subMenu } = itemData;
+
   const subMenuRef = useRef();
 
   const [collapsed, setCollapsed] = useState(false);
@@ -38,14 +46,18 @@ const Dropdown = ({ linkName, subMenu }) => {
     };
   }, []);
 
+
+  const itemIsUnavailable = itemData?.protected && !isAuthenticated;
+  if (itemIsUnavailable) return null;
+
   return (
-    <li className="navbar__menu__list__item">
+    <li key={key} className="navbar__menu__list__item">
       <a
         className="navbar__menu__list__item__link navbar__menu__list__item__link--dropdown-toggle"
         onClick={onDropDownClick}
         ref={subMenuRef}
       >
-        {linkName}
+        {name}
       </a>
 
       <ul
@@ -55,15 +67,14 @@ const Dropdown = ({ linkName, subMenu }) => {
         aria-labelledby="navbarDropdown"
       >
         {subMenu.map((subLink, indexSubMenu) => (
-          <li key={"sli" + indexSubMenu} className="navbar__menu__list__item__dropdown-menu__item">
-            <Link
-              className="navbar__menu__list__item__dropdown-menu__item__link"
-              aria-current="page"
-              to={subLink.link}
-            >
-              {subLink.name}
-            </Link>
-          </li>
+          <MenuItem
+            index={indexSubMenu}
+            className="navbar__menu__list__item__dropdown-menu__item"
+            i18nPluginOptions={i18nPluginOptions}
+            itemData={subLink}
+            locale={locale}
+            isAuthenticated={isAuthenticated}            
+          />
         ))}
       </ul>
     </li>

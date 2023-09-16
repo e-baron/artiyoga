@@ -8,36 +8,27 @@ import Image from "../image.js";
  */
 const NewsIndex = () => {
   const data = useStaticQuery(
-    graphql`query newsIndex {
-  allMdx(
-    sort: {fields: frontmatter___creationdate, order: DESC}
-    filter: {slug: {regex: "/news/.+/"}, frontmatter: {offline: {ne: true}}}
-  ) {
-    edges {
-      node {
-        id
-        excerpt(pruneLength: 100)
-        fields {
-          slug
-        }
-        frontmatter {
-          title
-          creationdate(formatString: "DD/MM/YYYY")
-          featuredImage
-        }
-      }
-    }
-  }
-  allFile(filter: {sourceInstanceName: {eq: "images"}}) {
-    edges {
-      node {
-        childImageSharp {
-          gatsbyImageData(quality: 90, layout: FULL_WIDTH)
+    graphql`{
+      allMdx(
+         sort: [{ frontmatter: { date: DESC } }, ]
+        filter:{ fields: { slug: { regex: "/news/.+/" } }, frontmatter: { offline: { ne: true } } }
+      ) {
+        edges {
+          node {
+            id
+            excerpt(pruneLength: 100)
+            fields {
+              slug
+            }
+            frontmatter {
+              featuredImage
+              title
+              date
+            }
+          }
         }
       }
     }
-  }
-}
 `
   );
 
@@ -56,7 +47,7 @@ const NewsIndex = () => {
             <div className="card__header">{newsItem.frontmatter.title}</div>
             <div className="card__content">{newsItem.excerpt}</div>
             <div className="card__footer">
-              {newsItem.frontmatter.creationdate}
+              {newsItem.frontmatter.date}
             </div>
           </div>
         </div>

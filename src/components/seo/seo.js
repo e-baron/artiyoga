@@ -29,7 +29,7 @@ const Seo = ({ title, description, language }) => {
     url: `${siteUrl}${pathname}`,
   };
 
-  console.log("seo: URL", `${siteUrl}${pathname}`);
+  //console.log("seo: URL", `${siteUrl}${pathname}`);
 
   return (
     <Helmet

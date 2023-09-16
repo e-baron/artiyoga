@@ -1,65 +1,97 @@
-const { createFilePath } = require("gatsby-source-filesystem");
-const path = require("path");
+const path = require('path');
+const crypto = require('crypto');
+const fetch = require('node-fetch');
+const { getSlugAndLang } = require('ptz-i18n');
+const { getFilePath } = require('./src/utils/files/files');
+const slugify = require(`@sindresorhus/slugify`);
+const { createFilePath } = require('gatsby-source-filesystem');
+
+let i18nPluginOptions;
+
+async function asyncPluginConfig() {
+  const {
+    default: { plugins },
+  } = await import('./gatsby-config.mjs');
+  const { options: i18nPluginOptionsTemp } = plugins.find(
+    (plugin) => plugin.resolve === `gatsby-plugin-i18n`
+  );
+  i18nPluginOptions = i18nPluginOptionsTemp;
+}
+
+// load variables from the .env.* files
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
 
 // add a slug field to all MDX files
-exports.onCreateNode = ({ node, actions, getNode }) => {
+exports.onCreateNode = async ({ node, actions, getNode }) => {
   const { createNodeField } = actions;
-  // you only want to operate on `Mdx` nodes. If you had content from a
-  // remote CMS you could also check to see if the parent node was a
-  // `File` node here
-  if (node.internal.type === "Mdx") {
-    const value = createFilePath({ node, getNode, basePath: `page-content` });
-    console.log("create this slug: ", value);
+  await asyncPluginConfig();
+
+  if (node.internal.type === 'Mdx') {
+    console.log('NODE : ', node.internal.contentFilePath);
+    const filePath = getFilePath(node.internal.contentFilePath);
+    const slugAndLang = getSlugAndLang(i18nPluginOptions, filePath);
+    console.log(
+      'prior : ',
+      slugAndLang.slug,
+      'slugigy : ',
+      slugify(slugAndLang.slug)
+    );
+    console.log('from source-filesystem : ', createFilePath({ node, getNode }));
+
     createNodeField({
-      // Individual MDX node
       node,
-      // Name of the field you are adding
-      name: "slug",      
-      // Generated value based on filepath. you
-      // don't need a separating "/" before the value because
-      // createFilePath returns a path with the leading "/".
-      value: value,
+      name: 'langKey',
+      value: slugAndLang.langKey,
+    });
+    createNodeField({
+      node,
+      name: 'slug',
+      value: slugAndLang.slug, // slugify(slugAndLang.slug),
     });
   }
 };
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
   // Destructure the createPage function from the actions object
-  console.log("CreatePages is called.");
+  console.log('CreatePages is called.');
   const { createPage } = actions;
   const result = await graphql(`
-  query {
-    allMdx {
-      edges {
-        node {
+    query {
+      allMdx {
+        nodes {
           id
           fields {
             slug
           }
+          internal {
+            contentFilePath
+          }
         }
       }
     }
-  }
   `);
 
   if (result.errors) {
-    console.error("page creation error");
+    console.error('page creation error');
     reporter.panicOnBuild('🚨  ERROR: Loading "createPages" query');
   }
-  // Create pages from /page-content.
-  const pages = result.data.allMdx.edges;
-  console.log("Pages to create : ", pages.length);
+  // Create pages from /pages.
+  // console.log('RRRRRRRRRR: ', result.data.allMdx.nodes);
+  const pages = result.data.allMdx.nodes;
+  console.log('Pages to create : ', pages.length);
+  const templatePath = path.resolve(`./src/templates/mdx-pages.js`);
+  console.log('path to template: ', templatePath);
   // you'll call `createPage` for each result
-  pages.forEach(({ node }, index) => {
-    console.log("Path:", node);
-    //console.log("Path:", node.slug);
+  pages.forEach((node, index) => {
+    console.log('CREATE PAGE FOR : ', node.fields.slug);
     createPage({
       // This is the slug you created before
       // (or `node.frontmatter.slug`)
       path: node.fields.slug,
       // This component will wrap our MDX content
-      component: path.resolve(`./src/templates/page-content-layout.js`),
-      //component: path.resolve(`src/templates/empty-page-layout.js`),
+      component: `${templatePath}?__contentFilePath=${node.internal.contentFilePath}`, // templatePath, //
       // Data passed to context is available
       // in page queries as GraphQL variables.
       //context: { id: node.id },
@@ -72,26 +104,96 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   });
 };
 
-
-
 // define fields for the menu & submenus if we want to avoid props with null values for example
 // this is important in order for the main-layout to work even if there are no SubMenus
 exports.createSchemaCustomization = ({ actions }) => {
-  const { createFieldExtension, createTypes } = actions
+  const { createFieldExtension, createTypes } = actions;
+
+  createFieldExtension({
+    name: 'defaultTrue',
+    extend() {
+      return {
+        resolve(source, args, context, info) {
+          if (source[info.fieldName] == null) {
+            return true;
+          }
+          return source[info.fieldName];
+        },
+      };
+    },
+  });
+
+  createFieldExtension({
+    name: 'defaultFalse',
+    extend() {
+      return {
+        resolve(source, args, context, info) {
+          if (source[info.fieldName] == null) {
+            return false;
+          }
+          return source[info.fieldName];
+        },
+      };
+    },
+  });
+
+  createFieldExtension({
+    name: 'defaultString',
+    extend() {
+      return {
+        resolve(source, args, context, info) {
+          if (source[info.fieldName] == null) {
+            return '';
+          }
+          return source[info.fieldName];
+        },
+      };
+    },
+  });
+
+  createFieldExtension({
+    name: 'defaultTitle',
+    extend() {
+      return {
+        resolve(source, args, context, info) {
+          console.log('source : ', source);
+          console.log('info : ', info);
+          if (source[info.fieldName] == null) {
+            return '';
+          }
+          return source[info.fieldName];
+        },
+      };
+    },
+  });
+
   createFieldExtension({
     name: `defaultArray`,
     extend() {
       return {
         resolve(source, args, context, info) {
           if (source[info.fieldName] == null) {
-            return []
+            return [];
           }
-          return source[info.fieldName]
+          return source[info.fieldName];
         },
-      }
+      };
     },
-  })
+  });
+
   const typeDefs = `
+  type Mdx implements Node {
+    frontmatter: MdxFrontmatter!
+  }
+    type MdxFrontmatter {      
+      autoMargin: Boolean @defaultTrue
+      title: String @defaultString   
+      description: String @defaultString 
+      headerImage: String @defaultString 
+      featuredImage: String @defaultString 
+      navbarExtraStyles: String @defaultString
+      date: Date @dateformat(formatString: "DD/MM/YYYY")
+    }
     type Site implements Node {
       siteMetadata: SiteMetadata
     }
@@ -101,13 +203,14 @@ exports.createSchemaCustomization = ({ actions }) => {
     type MenuLinks {
       name: String!
       link: String!
+      protected: Boolean @defaultFalse
       subMenu: [SubMenu] @defaultArray
     }
     type SubMenu {
       name: String
       link: String
-    }
-  `
-  createTypes(typeDefs)
-}
-
+      protected: Boolean @defaultFalse
+    }     
+  `;
+  createTypes(typeDefs);
+};
