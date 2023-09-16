@@ -72,7 +72,7 @@ const config = {
     {
       resolve: `web-projects-source-plugin`,
       options: {
-        projectGroupNames: ['Web2 2020', 'Web2 2021', 'Web2 2022'], // [] if you don't want to deal with public project views
+        projectGroupNames: [], // [] if you don't want to deal with public project views
       },
     },
     'gatsby-plugin-react-helmet',

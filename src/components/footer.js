@@ -20,7 +20,7 @@ const Footer = ({ siteMetaData, frontmatter, ...otherProps}) => {
   return (
     <footer className={classValue}>
       <Background
-        {...(frontmatter.footerImage ? { imageName: frontmatter.footerImage  } : {})}
+        {...(frontmatter?.footerImage ? { imageName: frontmatter?.footerImage  } : {})}
         className="footer__background"
       >
         <div className="footer__logo">
