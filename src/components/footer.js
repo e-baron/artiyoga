@@ -11,15 +11,16 @@ import {
 
 import Background from "./background.js";
 
-const Footer = ({ siteMetaData, ...otherProps }) => {
-  const { className, footerImage } = otherProps;
+const Footer = ({ siteMetaData, frontmatter, ...otherProps}) => {
+  
+  const { className } = otherProps;
   const classValue = `footer ${className ? className : ""}`;
 
 
   return (
     <footer className={classValue}>
       <Background
-        {...(footerImage ? { imageName: footerImage } : {})}
+        {...(frontmatter.footerImage ? { imageName: frontmatter.footerImage  } : {})}
         className="footer__background"
       >
         <div className="footer__logo">

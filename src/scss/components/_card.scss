@@ -6,6 +6,10 @@
   margin-bottom: 0.5rem;
   background-color: lighten($primary-color, 10%);
 
+  &--with-light-color{
+    background-color: lighten($primary-color, 65%);
+  }
+
   &--fill-wrapper {
     height: 100%;
   }
@@ -19,8 +23,8 @@
     border-radius: 0%;
   }
 
-  &__simple-youtube-container{
-    display:"inline-block";
+  &__simple-youtube-container {
+    display: 'inline-block';
     max-width: 480px;
     margin-bottom: 1rem;
   }
@@ -40,6 +44,10 @@
 
     @media only screen and (min-width: $sm) {
       grid-template-columns: 150px 2fr;
+    }
+
+    &--is-one-column {
+      display: block;
     }
 
     &--long-titles {

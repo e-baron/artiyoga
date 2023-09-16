@@ -123,6 +123,7 @@ const MainLayout = ({
 
           <Footer
             siteMetaData={data.site.siteMetadata}
+            frontmatter={frontmatter}
             langs={langsMenu}
           ></Footer>
           <Scroll showBelow={250} />

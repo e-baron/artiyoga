@@ -190,6 +190,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       title: String @defaultString   
       description: String @defaultString 
       headerImage: String @defaultString 
+      footerImage: String @defaultString 
       featuredImage: String @defaultString 
       navbarExtraStyles: String @defaultString
       date: Date @dateformat(formatString: "DD/MM/YYYY")

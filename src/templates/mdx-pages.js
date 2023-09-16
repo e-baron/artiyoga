@@ -106,6 +106,7 @@ export const pageQuery = graphql`
         navbarExtraStyles
         headerImage
         featuredImage
+        footerImage
         description
         autoMargin
       }
