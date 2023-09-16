@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Sitemap: https://e-baron.github.io/artiyoga/sitemap-index.xml
+Host: https://e-baron.github.io

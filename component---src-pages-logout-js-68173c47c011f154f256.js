@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkartiyoga=self.webpackChunkartiyoga||[]).push([[321],{5354:function(e,t,a){a.r(t);var n=a(7294),c=a(5258),u=a(4160),l=a(5583);t.default=()=>{const{instance:e}=(0,c.Fp)();return(0,n.useEffect)((()=>{e.logoutRedirect(),(0,u.navigate)("/")})),n.createElement(l.Z,null,n.createElement("h3",{className:"pl-3"},"Logout"))}}}]);
+//# sourceMappingURL=component---src-pages-logout-js-68173c47c011f154f256.js.map
