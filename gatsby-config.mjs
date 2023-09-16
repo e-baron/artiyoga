@@ -2,9 +2,9 @@ import remarkGfm from 'remark-gfm';
 import rehypeMdxCodeProps from 'rehype-mdx-code-props';
 import pkg from './package.json' assert { type: 'json' };
 
-const siteURL = 'https://e-baron.gitlab.io/artiyoga'; // No trailing slash allowed!
+const siteURL = 'https://e-baron.github.io/artiyoga'; // No trailing slash allowed!
 const siteTitle = 'artiYoga';
-const youtubeUrl = ''; //"https://www.youtube.com/channel/UC_iU0pfrDaYFXd6X9mPlAJQ";
+const youtubeUrl = 'https://www.youtube.com/channel/UCl_6cWf7A0yPr2GPW4uJ7lw'; //"https://www.youtube.com/channel/UC_iU0pfrDaYFXd6X9mPlAJQ";
 const authorEmail = 'baroni.kati@gmail.com';
 const facebookUrl = 'https://www.facebook.com/artiyoga';
 const instagramUrl = 'https://www.instagram.com/baroni.kati/';
