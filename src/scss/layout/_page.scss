@@ -18,7 +18,8 @@
 
   @media only screen and (min-width: $lg) {
     width: auto;
-    &:has(.page-menu) { // unfortunately does not work yet for Firefox !!!
+    &:has(.page-menu) {
+      // unfortunately does not work yet for Firefox !!!
       margin-left: 30vw;
     }
 
@@ -26,7 +27,7 @@
       margin-left: 0;
     }
 
-    &--visible-internal-menu{
+    &--visible-internal-menu {
       margin-left: 30vw;
     }
   }

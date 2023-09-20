@@ -1,7 +1,13 @@
-import React from "react";
-const Content = ({ children, className}) => {
-    const classValue = `section__content ${className ? className : ""}`;
+import React from 'react';
+import NestedMdxBlock from '../components/mdx/nested-mdx-block';
 
-    return <div className={classValue}>{children}</div>;
+const Content = ({ children, className }) => {
+  const classValue = `section__content ${className ? className : ''}`;
+
+  return (
+    <div className={classValue}>
+      <NestedMdxBlock children={children} />
+    </div>
+  );
 };
 export default Content;

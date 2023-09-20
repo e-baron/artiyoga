@@ -35,9 +35,9 @@ const NewsIndex = () => {
   const { edges: news } = data.allMdx;
 
   return (
-    <div className="section">
+    <div className="section section--news-index">
       {news.map(({ node: newsItem }) => (
-        <div className="section__content section__content--no-grow-for-single-content">
+        <div className="section__content">
           <div className="card card--with-light-color">
             <div className="card__image vh-40">
               <Link to={newsItem.fields.slug}>

@@ -11,7 +11,35 @@
 
   width: 100%;
   min-height: 10px;
-  //z-index: 5;
+
+  &--news-index .section__content {
+    padding-bottom: 0.5rem;
+    @media only screen and (min-width: $lg) {
+      max-width: 50%;
+      &:nth-child(2n-1) {
+        padding-right: 1rem;
+      }
+    }
+  }
+
+  &--auto-margin .section__content {
+    padding-top: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    ul,
+    ol {
+      padding-left: 1.3rem;
+      padding-right: 1.3rem;
+      margin-bottom: 1rem;
+      line-height: 1.5;
+    }
+  }
+
+  &--no-auto-margin {
+    padding-top: 0rem;
+    padding-left: 0rem;
+    padding-right: 0rem;
+  }
 
   &__content {
     // The flex shorthand allows you to set the three values in this order — flex-grow, flex-shrink, flex-basis
@@ -23,25 +51,40 @@
     //in a flex container, where you have box-sizing: border-box, and the width or flex-basis is used to calculate length, the boxes will render evenly regardless of padding.
     box-sizing: border-box;
 
-    padding-top: 1rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
-
-    &--no-auto-margin{
-      padding-left: 0rem;
+    &--auto-margin {
+      padding-top: 1rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      ul,
+      ol {
+        padding-left: 1.3rem;
+        padding-right: 1.3rem;
+        margin-bottom: 1rem;
+        line-height: 1.5;
+      }
     }
-    
+
+    &--no-auto-margin {
+      padding-top: 0rem;
+      padding-left: 0rem;
+      padding-right: 0rem;
+    }
+
+    &--center {
+      justify-content: center;
+      text-align: center;
+    }
+
     @media only screen and (min-width: $lg) {
       flex-basis: 50%;
     }
 
-
-    &--no-grow-for-single-content{      
+    /*
+    &--no-grow-for-single-content {
       @media only screen and (min-width: $lg) {
-        max-width:50%;
+        max-width: 50%;
       }
-    }
-
+    }*/
   }
 
   /* Section's elements */
@@ -55,7 +98,7 @@
     padding-right: 1rem;
     @include emphasized-text();
 
-    &--left{
+    &--left {
       text-align: left;
       padding-left: 1rem;
     }
@@ -63,14 +106,13 @@
 
   &__footer {
     flex: 1 1 100%;
-    min-height: 5vh;
+    // min-height: 5vh;
     text-align: center;
     align-self: flex-end;
-    justify-content:center ;
+    justify-content: center;
     padding-left: 1rem;
     padding-right: 1rem;
-    padding-bottom: 1rem;
-
+    // padding-bottom: 1rem;
   }
 
   /* Deal with background elements within a section or within a : note that this is normally not necessary
@@ -90,8 +132,8 @@
   // Deal with hyperlinks in a section
   a {
     color: $tertiary-color;
-    transition: color 0.15s ease-in-out,
-      background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+      border-color 0.15s ease-in-out;
 
     cursor: pointer;
     &:hover,
@@ -102,4 +144,3 @@
 
   /* Deal with section modifiers */
 }
-

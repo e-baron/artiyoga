@@ -40,6 +40,7 @@ const shortcodes = {
   Section,
   Content,
   Carousel,
+  ContentWithBackground : Background,
   Background,
   SectionHeader,
   SectionFooter,

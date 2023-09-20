@@ -108,7 +108,7 @@ const MainLayout = ({
           <main className="main">
             {featuredImage && (
               <div>
-                <Section className="pt-3">
+                <Section className={!frontmatter.autoMargin ? "pt-3" : "section--auto-margin pt-3"}>
                   <SectionHeader className="section__header--left">
                     {pageTitle}
                   </SectionHeader>

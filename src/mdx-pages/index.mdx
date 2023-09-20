@@ -5,67 +5,57 @@ autoMargin: false
 ---
 
 <Section>  
-  <Background imageName="meditation.jpg" className="vh-100 w-100">
-    
-    <SectionFooter className="text--light text--emphasized">
-    Kati : Yoga with heart and art in Halle !
-    </SectionFooter>
-    
-  </Background>
-  
+  <ContentWithBackground imageName="meditation.jpg" className="vh-100 w-100">    
+    <SectionFooter className="text--light text--emphasized mb-3">Kati : Yoga with heart and art in Halle !</SectionFooter>    
+  </ContentWithBackground>  
 </Section>
 
 
 <Section>
-  <Content className="vh-50 w-100">
+  <Content className="vh-50 w-100 section__content--auto-margin">
     <h3>Privé</h3>
     Kati offre de nombreux cours privés....
   </Content>
-  <Background imageName="meditation.jpg" className="vh-50 w-100">
+  <ContentWithBackground imageName="meditation.jpg" className="vh-50 w-100">
     <Content>
-    <SectionHeader className="text--light text--emphasized">Amazing classes ; ) : )</SectionHeader>
+      <SectionHeader className="text--light text--emphasized mt-3">Amazing classes ; ) : )</SectionHeader>
     </Content>
-  </Background>
+  </ContentWithBackground>
   
 </Section>
 
 <Section>
-  <Content className="vh-50 w-100">
+  <Content className="vh-50 w-100 section__content--auto-margin">
     <h3>Professional</h3>
     Cours en entreprise : ))
   </Content>
-  <Background imageName="meditation.jpg" className="vh-50 w-100">
+  <ContentWithBackground imageName="meditation.jpg" className="vh-50 w-100">
     <Content>
-    <SectionHeader className="text--light text--emphasized ml-3">Amazing classes ; ) : )</SectionHeader>
+      <SectionHeader className="text--light text--emphasized ml-3 mt-3">Amazing classes ; ) : )</SectionHeader>
     </Content>
-  </Background>
+  </ContentWithBackground>
   
 </Section>
 
-<Section>
-  
-  
-    <Content className="vh-100">
-      <Image name="nature-chill.JPG"/>
-    </Content>
-  
-
+<Section className="section--auto-margin">  
+  <Content className="vh-100">
+    <Image name="nature-chill.JPG"/>    
+  </Content>  
   <Content className="vh-100">
      <h3>About Kati</h3>
     Lot to say about this amazing Yogi...
-  </Content>
-  
+  </Content>  
 </Section>
 
 
-<Section className="pb-3">  
+<Section className="pb-3 section--auto-margin">  
     <Content className="vh-50 w-100">
       <Image name="nature-chill.JPG"/>
     </Content>  
 
   <Content className="w-100">
      <h3>Getuigenissen</h3>       
-        <Carousel backgroundImageName=""/>     
+        <Carousel ContentWithBackgroundImageName=""/>     
   </Content>
   
 </Section>
