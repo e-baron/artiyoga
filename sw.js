@@ -27,7 +27,7 @@ workbox.core.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-295773424132e516e168.js"
+    "url": "webpack-runtime-356f10d8cd38164a9d69.js"
   },
   {
     "url": "framework-a22b5ef4496c47a350ed.js"
@@ -36,11 +36,11 @@ self.__precacheManifest = [
     "url": "cb1608f2-599e14ee317102413518.js"
   },
   {
-    "url": "app-991a4f9b1c91a3fc3e62.js"
+    "url": "app-36b05a839332cd235654.js"
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "992d4a8a18a1a0968f1ad150960d72a9"
+    "revision": "c65fb96db7cce34a6e2ae7bc05e4662e"
   },
   {
     "url": "manifest.webmanifest",
@@ -154,7 +154,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/artiyoga/app-991a4f9b1c91a3fc3e62.js`))) {
+  if (!resources || !(await caches.match(`/artiyoga/app-36b05a839332cd235654.js`))) {
     return await fetch(event.request)
   }
 
